@@ -1,0 +1,27 @@
+/* Additional button text visibility */
+.bg-\[#00D4AA\] {
+    background-color: #00D4AA !important;
+}
+
+.text-\[#0A2540\] {
+    color: #0A2540 !important;
+    font-weight: 700 !important;
+}
+
+/* Enhanced button visibility */
+a[href="#projects"],
+a[href="#contact"] {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Make border buttons more visible */
+.border-slate-600 {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    background: rgba(10, 37, 64, 0.6) !important;
+}
+
+.border-slate-600:hover {
+    border-color: #00D4AA !important;
+    background: rgba(10, 37, 64, 0.8) !important;
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nishant Indrasingh Shekhawat | Full Stack Developer</title>
+    <meta name="description"
+        content="Motivated Software Developer crafting robust web solutions with modern technologies. Specialized in Laravel, PHP, and Full-Stack Development.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-[#0A2540] text-slate-200 overflow-x-hidden">
+
+    <!-- Cursor Trail -->
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 cursor-pointer group">
+                    <span
+                        class="text-2xl font-bold text-white group-hover:text-[#00D4AA] transition-all duration-300 transform group-hover:scale-110 inline-block">NIS<span
+                            class="text-[#00D4AA] glow-effect">.</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home"
+                            class="text-slate-300 hover:text-[#00D4AA] px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:scale-110 magnetic">Home</a>
+                        <a href="#about"
+                            class="text-slate-300 hover:text-[#00D4AA] px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:scale-110 magnetic">About</a>
+                        <a href="#experience"
+                            class="text-slate-300 hover:text-[#00D4AA] px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:scale-110 magnetic">Experience</a>
+                        <a href="#skills"
+                            class="text-slate-300 hover:text-[#00D4AA] px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:scale-110 magnetic">Skills</a>
+                        <a href="#projects"
+                            class="text-slate-300 hover:text-[#00D4AA] px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:scale-110 magnetic">Projects</a>
+                        <a href="#contact"
+                            class="bg-[#00D4AA] text-[#0A2540] hover:bg-white px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 transform hover:scale-110 shadow-lg shadow-[#00D4AA]/20 hover:shadow-[#00D4AA]/40 magnetic">Hire
+                            Me</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobileMenuBtn"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-white/10 focus:outline-none transition-all duration-300 magnetic">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#0A2540]/95 backdrop-blur-lg">
+                <a href="#home"
+                    class="text-slate-300 hover:text-[#00D4AA] block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#about"
+                    class="text-slate-300 hover:text-[#00D4AA] block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#experience"
+                    class="text-slate-300 hover:text-[#00D4AA] block px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                <a href="#skills"
+                    class="text-slate-300 hover:text-[#00D4AA] block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                <a href="#projects"
+                    class="text-slate-300 hover:text-[#00D4AA] block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#contact"
+                    class="text-slate-300 hover:text-[#00D4AA] block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home"
+        class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden animated-gradient">
+        <!-- Animated Background Particles -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div
+                class="absolute top-1/4 left-1/4 w-64 h-64 bg-[#00D4AA] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-float morphing-shape">
+            </div>
+            <div
+                class="absolute top-1/3 right-1/4 w-96 h-96 bg-[#0f4c81] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float-delayed morphing-shape">
+            </div>
+            <div
+                class="absolute -bottom-32 left-1/3 w-72 h-72 bg-[#F59E0B] rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-float morphing-shape">
+            </div>
+
+            <!-- Floating Particles -->
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center z-10">
+            <div class="w-full md:w-1/2 text-center md:text-left mb-12 md:mb-0">
+                <div
+                    class="inline-block px-4 py-1 rounded-full border border-[#00D4AA]/30 bg-[#00D4AA]/10 text-[#00D4AA] text-sm font-medium mb-6 scale-pulse">
+                    Available for Opportunities
+                </div>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight slide-in-left">
+                    Hi, I'm <br>
+                    <span class="gradient-text neon-glow fade-in-scale stagger-1">Nishant Shekhawat</span>
+                </h1>
+                <div class="h-8 mb-6 slide-in-left stagger-1">
+                    <p class="text-xl md:text-2xl text-slate-300 font-light typing-effect inline-block">
+                        Laravel & PHP Full-Stack Expert
+                    </p>
+                </div>
+                <p class="text-slate-400 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed slide-in-left stagger-2">
+                    Motivated Software Developer crafting robust web solutions with modern technologies. Specialized in
+                    building scalable applications and seamless user experiences.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start slide-in-left stagger-3">
+                    <a href="#projects"
+                        class="px-8 py-4 bg-[#00D4AA] text-[#0A2540] font-bold rounded-lg hover:bg-white transition-all duration-300 transform hover:-translate-y-2 shadow-lg shadow-[#00D4AA]/25 hover:shadow-[#00D4AA]/50 flex items-center justify-center gap-2 magnetic hover-glow">
+                        View Work <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#contact"
+                        class="px-8 py-4 border border-slate-600 text-slate-300 font-medium rounded-lg hover:border-[#00D4AA] hover:text-[#00D4AA] transition-all duration-300 flex items-center justify-center gap-2 magnetic hover:scale-105">
+                        Contact Me
+                    </a>
+                </div>
+
+                <div
+                    class="mt-12 flex items-center justify-center md:justify-start gap-6 text-slate-400 text-sm slide-in-left stagger-4">
+                    <div
+                        class="flex items-center gap-2 hover:text-[#00D4AA] transition-colors duration-300 cursor-pointer">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-[#00D4AA] glow-effect"></i> Palghar, India
+                    </div>
+                    <div
+                        class="flex items-center gap-2 hover:text-[#00D4AA] transition-colors duration-300 cursor-pointer">
+                        <i data-lucide="mail" class="w-4 h-4 text-[#00D4AA] glow-effect"></i>
+                        nishantshekhawat2001@gmail.com
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 flex justify-center relative slide-in-right">
+                <div class="relative w-72 h-72 md:w-96 md:h-96">
+                    <div class="absolute inset-0 border-2 border-[#00D4AA]/20 rounded-full rotate-slow"></div>
+                    <div
+                        class="absolute inset-4 border-2 border-dashed border-[#F59E0B]/20 rounded-full animate-[spin_15s_linear_infinite_reverse]">
+                    </div>
+                    <div
+                        class="absolute inset-0 rounded-full overflow-hidden border-4 border-[#0A2540] shadow-2xl hover:shadow-[#00D4AA]/30 transition-all duration-500 scale-pulse">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Nishant Shekhawat"
+                            class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                    </div>
+
+                    <!-- Floating Tech Badges -->
+                    <div
+                        class="absolute -top-4 -right-4 bg-[#1a3a5a] p-3 rounded-xl shadow-lg animate-float border border-white/10 hover:scale-125 transition-transform duration-300 magnetic bounce-in stagger-1">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg"
+                            class="w-8 h-8 glow-effect" alt="Laravel">
+                    </div>
+                    <div
+                        class="absolute bottom-8 -left-8 bg-[#1a3a5a] p-3 rounded-xl shadow-lg animate-float-delayed border border-white/10 hover:scale-125 transition-transform duration-300 magnetic bounce-in stagger-2">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg"
+                            class="w-8 h-8 glow-effect" alt="PHP">
+                    </div>
+                    <div
+                        class="absolute top-1/2 -right-12 bg-[#1a3a5a] p-3 rounded-xl shadow-lg animate-float border border-white/10 hover:scale-125 transition-transform duration-300 magnetic bounce-in stagger-3">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                            class="w-8 h-8 glow-effect" alt="React">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-slate-500 hover:text-[#00D4AA] transition-all duration-300 glow-effect">
+                <i data-lucide="chevron-down" class="w-8 h-8"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Load remaining sections -->
+    <div id="sections-container"></div>
+
+    <!-- Footer -->
+    <footer class="bg-[#0A2540] border-t border-white/5 py-8">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center fade-in-scale">
+            <p class="text-slate-500 text-sm mb-4 md:mb-0">
+                &copy; 2026 Nishant Shekhawat. All rights reserved.
+            </p>
+            <div class="flex items-center gap-6 text-sm text-slate-500">
+                <a href="#" class="hover:text-[#00D4AA] transition-all duration-300 magnetic">Privacy Policy</a>
+                <a href="#" class="hover:text-[#00D4AA] transition-all duration-300 magnetic">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sections.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

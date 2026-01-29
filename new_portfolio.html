@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nishant Shekhawat | Cinematic Portfolio</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        space: '#020204',
+                        neon: {
+                            blue: '#00f3ff',
+                            purple: '#bc13fe',
+                            pink: '#ff0055',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Orbitron', 'sans-serif'],
+                        body: ['Rajdhani', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Three.js for 3D Earth -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Cinematic Engine Styles -->
+    <link rel="stylesheet" href="css/cinematic.css">
+</head>
+
+<!-- Glass Navbar (Hidden during Intro) -->
+<nav id="main-nav"
+    class="fixed top-6 left-1/2 -translate-x-1/2 z-[5000] w-[90%] max-w-4xl bg-black/40 backdrop-blur-xl border border-white/10 rounded-full py-3 px-8 flex items-center justify-between opacity-0 translate-y-[-100px] transition-all duration-1000 pointer-events-none">
+    <div class="flex items-center gap-3">
+        <div
+            class="w-8 h-8 rounded-full bg-neon-blue flex items-center justify-center font-heading text-black font-black text-xs">
+            NS</div>
+        <span id="director-toggle" onclick="toggleDirectorMode()"
+            class="font-heading text-xs tracking-widest hidden sm:block cursor-pointer hover:text-white transition-colors"
+            title="Toggle Cinematic Mode">Director Mode: <span class="text-neon-blue">OFF</span></span>
+    </div>
+    <div class="flex gap-6 md:gap-10">
+        <a href="#experience"
+            class="text-[10px] md:text-xs font-heading tracking-widest text-gray-400 hover:text-neon-blue transition-colors">EXPERIENCE</a>
+        <a href="#skills"
+            class="text-[10px] md:text-xs font-heading tracking-widest text-gray-400 hover:text-neon-purple transition-colors">SKILLS</a>
+        <a href="#projects"
+            class="text-[10px] md:text-xs font-heading tracking-widest text-gray-400 hover:text-neon-pink transition-colors">PROJECTS</a>
+        <a href="#contact"
+            class="text-[10px] md:text-xs font-heading tracking-widest text-gray-400 hover:text-white transition-colors border border-white/20 px-3 py-1 rounded-full hover:border-white">SIGNAL</a>
+    </div>
+</nav>
+
+<!-- Introductory Cinematic Wrappers -->
+<!-- Introductory Cinematic Sections -->
+<section class="scene flex flex-col items-center justify-center relative select-none" id="hero">
+    <div class="content-layer text-center z-10 p-4">
+        <h1 class="text-4xl md:text-7xl font-heading mb-6 tracking-wider leading-tight">
+            In a universe of <br>
+            <span class="text-neon-blue text-glow">infinite developers</span>...
+        </h1>
+        <p class="text-xl md:text-3xl text-gray-400 font-light reveal mt-8 tracking-[0.2em]">
+            one stands out.
+        </p>
+
+        <a href="#search"
+            class="mt-16 animate-bounce text-neon-blue opacity-50 hover:opacity-100 cursor-pointer transition-opacity duration-300 block group">
+            <i data-lucide="chevron-down"
+                class="w-10 h-10 mx-auto group-hover:drop-shadow-[0_0_10px_rgba(0,243,255,0.8)]"></i>
+            <span class="text-xs uppercase tracking-widest group-hover:text-glow">Engage Thrusters</span>
+        </a>
+
+        <!-- Skip Button -->
+        <button onclick="switchToSPAMode()"
+            class="mt-8 text-[10px] uppercase tracking-[0.4em] text-gray-500 hover:text-white transition-colors">
+            [ Skip Cinematic Intro ]
+        </button>
+    </div>
+</section>
+
+<!-- SECTION 2: GALAXY SEARCH -->
+<section class="scene relative w-full h-screen overflow-hidden flex items-center justify-center bg-space intro-section"
+    id="search">
+    <!-- Map & Heat Wrapper -->
+    <div id="map-world"
+        class="absolute inset-0 w-full h-full transition-transform duration-[2500ms] cubic-bezier(0.1, 0, 0.1, 1)">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/World_map_blank_without_borders.svg/2000px-World_map_blank_without_borders.svg.png"
+            class="absolute inset-0 w-full h-full object-contain opacity-40"
+            style="filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg) drop-shadow(0 0 2px #00f3ff);"
+            alt="World Map Outlines">
+
+        <!-- Heatmap Overlay -->
+        <div id="heat-layer" class="absolute inset-0 w-full h-full mix-blend-screen pointer-events-none opacity-30">
+            <!-- Replaced thermal blobs with a subtle global network pulse -->
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,243,255,0.1)_0%,transparent_70%)] animate-pulse"
+                style="animation-duration: 4s;"></div>
+        </div>
+
+        <!-- Surat Pin -->
+        <div id="surat-container"
+            class="absolute top-[42%] left-[69%] w-0 h-0 flex items-center justify-center opacity-0 transition-opacity duration-500 z-10">
+            <div class="content w-4 h-4 bg-white rounded-full shadow-[0_0_30px_#fff] animate-ping"></div>
+            <div class="absolute w-2 h-2 bg-neon-pink rounded-full border border-white"></div>
+            <div
+                class="absolute -top-10 left-1/2 -translate-x-1/2 text-neon-blue font-heading text-sm tracking-widest whitespace-nowrap bg-black/90 px-3 py-1 border border-neon-blue rounded shadow-[0_0_20px_rgba(0,243,255,0.3)]">
+                SURAT, IN</div>
+        </div>
+    </div>
+
+    <!-- Foreground UI (Correctly Isolated) -->
+    <div id="search-ui-layer"
+        class="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
+        <div class="w-[80vw] h-[60vh] border border-white/10 relative overflow-hidden rounded-lg">
+            <div
+                class="absolute top-0 left-0 w-full h-1 bg-neon-blue/40 shadow-[0_0_20px_#00f3ff] animate-[scanVertical_3s_linear_infinite]">
+            </div>
+        </div>
+        <div class="mt-8 text-center bg-black/80 backdrop-blur-xl p-6 rounded border border-white/10">
+            <h2 class="text-3xl font-heading text-white type-writer typing-cursor"></h2>
+        </div>
+    </div>
+</section>
+
+
+<!-- SECTION 3: TARGET FOUND -->
+<section class="scene flex items-center justify-center relative" id="target">
+    <div class="content-layer grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl mx-auto items-center p-6 w-full">
+        <div class="order-2 md:order-1 text-left space-y-6">
+            <div
+                class="inline-flex items-center gap-2 border border-green-500 text-green-500 px-4 py-1 rounded-full text-xs font-bold tracking-widest animate-pulse">
+                <i data-lucide="crosshair" class="w-4 h-4"></i> TARGET LOCKED
+            </div>
+
+            <h2 class="text-5xl md:text-7xl font-heading text-white text-glow leading-tight break-words">
+                Nishant<br>Shekhawat
+            </h2>
+
+            <h3
+                class="text-2xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple font-medium">
+                Software Developer | PHP | Laravel
+            </h3>
+
+            <div class="flex gap-6 pt-8">
+                <button id="mission-button" onclick="engageWarp('experience')"
+                    class="bg-black border border-neon-blue text-white px-10 py-4 font-bold font-heading hover:bg-neon-blue hover:text-black transition-all shadow-[0_0_20px_rgba(0,243,255,0.4)] tracking-wider rounded-sm">
+                    [ ACCESS PAST MISSIONS ]
+                </button>
+            </div>
+
+            <!-- Data Stream Connector -->
+            <div
+                class="absolute left-1 md:left-1/2 bottom-0 w-px h-24 bg-gradient-to-b from-neon-blue to-transparent animate-pulse delay-1000 hidden md:block">
+            </div>
+
+            <div class="mt-8 grid grid-cols-2 gap-4 text-gray-400 font-body text-sm opacity-0 reveal-delay">
+                <div>> EXPERIENCE: LOADED</div>
+                <div>> TECH STACK: ONLINE</div>
+            </div>
+        </div>
+
+        <div class="order-1 md:order-2 relative perspective-1000 flex justify-center items-center">
+            <!-- Solar System Profile Container -->
+            <div class="relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] flex items-center justify-center">
+
+                <!-- Core: Profile Image -->
+                <div id="profile-launcher"
+                    class="relative z-20 w-48 h-48 md:w-64 md:h-64 rounded-full p-2 border-2 border-neon-blue/50 bg-black/50 backdrop-blur-md shadow-[0_0_50px_rgba(0,243,255,0.2)] group overflow-hidden">
+                    <img src="Media (1).png"
+                        class="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-95 group-hover:brightness-125"
+                        alt="Nishant Shekhawat">
+
+                    <!-- Holographic Scan Beam Placeholder -->
+                    <div class="scanning-beam"></div>
+
+                    <!-- Floating Verification Badge -->
+                    <div
+                        class="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-black border border-green-500 rounded-full flex items-center gap-2 shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-opacity">
+                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span
+                            class="text-[10px] md:text-xs font-heading text-green-500 tracking-widest uppercase whitespace-nowrap">Identity
+                            Verified</span>
+                    </div>
+                </div>
+
+                <!-- Ring 1: Web Core (Inner) -->
+                <div
+                    class="absolute w-[120%] h-[120%] rounded-full border border-neon-blue/20 animate-[spin_20s_linear_infinite] z-10 pointer-events-none">
+                    <!-- Items -->
+                    <div
+                        class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black border border-neon-blue text-neon-blue p-2 rounded-full w-10 h-10 flex items-center justify-center shadow-glow-blue animate-[spin_20s_linear_infinite_reverse]">
+                        <i data-lucide="code-2" class="w-5 h-5"></i>
+                    </div>
+                    <div
+                        class="absolute bottom-[20%] right-[5%] bg-black border border-neon-blue text-neon-blue p-2 rounded-full w-10 h-10 flex items-center justify-center shadow-glow-blue animate-[spin_20s_linear_infinite_reverse]">
+                        <i data-lucide="file-code" class="w-5 h-5"></i>
+                    </div>
+                    <div
+                        class="absolute bottom-[20%] left-[5%] bg-black border border-neon-blue text-neon-blue p-2 rounded-full w-10 h-10 flex items-center justify-center shadow-glow-blue animate-[spin_20s_linear_infinite_reverse]">
+                        <i data-lucide="layout" class="w-5 h-5"></i>
+                    </div>
+                </div>
+
+                <!-- Ring 2: Backend & Tools (Middle) -->
+                <div
+                    class="absolute w-[160%] h-[160%] rounded-full border border-neon-purple/20 animate-[spin_30s_linear_infinite_reverse] z-0 pointer-events-none">
+                    <!-- Laravel -->
+                    <div
+                        class="absolute top-[10%] left-[10%] bg-black border border-neon-purple text-neon-purple p-3 rounded-full w-12 h-12 flex items-center justify-center shadow-glow-purple animate-[spin_30s_linear_infinite]">
+                        <span class="font-bold text-[10px]">LAR</span>
+                    </div>
+                    <!-- PHP -->
+                    <div
+                        class="absolute top-[10%] right-[10%] bg-black border border-neon-purple text-neon-purple p-3 rounded-full w-12 h-12 flex items-center justify-center shadow-glow-purple animate-[spin_30s_linear_infinite]">
+                        <span class="font-bold text-[10px]">PHP</span>
+                    </div>
+                    <!-- SQL -->
+                    <div
+                        class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-black border border-neon-purple text-neon-purple p-3 rounded-full w-12 h-12 flex items-center justify-center shadow-glow-purple animate-[spin_30s_linear_infinite]">
+                        <i data-lucide="database" class="w-5 h-5"></i>
+                    </div>
+                    <!-- Git -->
+                    <div
+                        class="absolute top-1/2 -right-[6%] bg-black border border-white text-white p-2 rounded-full w-10 h-10 flex items-center justify-center shadow-[0_0_15px_white] animate-[spin_30s_linear_infinite]">
+                        <i data-lucide="git-branch" class="w-5 h-5"></i>
+                    </div>
+                </div>
+
+                <!-- Ring 3: Advanced AI & Infra (Outer) -->
+                <div
+                    class="absolute w-[210%] h-[210%] rounded-full border border-neon-pink/10 animate-[spin_50s_linear_infinite] z-0 opacity-60 pointer-events-none">
+                    <!-- AI -->
+                    <div
+                        class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black border border-neon-pink text-neon-pink p-3 rounded-full w-12 h-12 flex items-center justify-center shadow-[0_0_20px_#ff0055] animate-[spin_50s_linear_infinite_reverse]">
+                        <i data-lucide="brain" class="w-6 h-6"></i>
+                    </div>
+                    <!-- Docker -->
+                    <div
+                        class="absolute bottom-[15%] right-[15%] bg-black border border-blue-400 text-blue-400 p-2 rounded-full w-10 h-10 flex items-center justify-center shadow-[0_0_15px_#60a5fa] animate-[spin_50s_linear_infinite_reverse]">
+                        <i data-lucide="container" class="w-5 h-5"></i>
+                    </div>
+                    <!-- ChatGPT -->
+                    <div
+                        class="absolute bottom-[15%] left-[15%] bg-black border border-teal-400 text-teal-400 p-2 rounded-full w-10 h-10 flex items-center justify-center shadow-[0_0_15px_#2dd4bf] animate-[spin_50s_linear_infinite_reverse]">
+                        <i data-lucide="bot" class="w-5 h-5"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 4: EXPERIENCE - MISSION LOG -->
+<section class="scene flex flex-col items-center justify-center relative" id="experience">
+    <div class="content-layer max-w-6xl mx-auto w-full p-6">
+        <h2
+            class="text-5xl md:text-8xl font-heading text-center mb-20 text-white/10 absolute top-10 left-0 w-full select-none">
+            MISSION LOG</h2>
+        <h2 class="text-3xl md:text-5xl font-heading text-center mb-16 relative z-10"><span
+                class="text-neon-blue">///</span> Experience Timeline</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+            <!-- Card 1 -->
+            <div class="holo-card p-8 rounded-xl border-l-4 border-neon-blue hover:translate-x-2 transition-transform">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl text-white font-bold">Webito Infotech</h3>
+                    <span class="text-neon-blue font-heading text-sm px-2 py-1 border border-neon-blue rounded">2024
+                        – Present</span>
+                </div>
+                <h4 class="text-xl text-gray-300 mb-4">Laravel Developer</h4>
+                <ul class="text-gray-400 space-y-2 list-disc list-inside">
+                    <li>Architected enterprise REST APIs</li>
+                    <li>Boosted DB performance by 40%</li>
+                    <li>Backend microservices</li>
+                </ul>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+                class="holo-card p-8 rounded-xl border-l-4 border-neon-purple hover:translate-x-2 transition-transform">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl text-white font-bold">Astronaut Creatives</h3>
+                    <span class="text-neon-purple font-heading text-sm px-2 py-1 border border-neon-purple rounded">2023
+                        – 2024</span>
+                </div>
+                <h4 class="text-xl text-gray-300 mb-4">Software Developer</h4>
+                <ul class="text-gray-400 space-y-2 list-disc list-inside">
+                    <li>Full Stack (Laravel + Angular)</li>
+                    <li>Fintech security integration</li>
+                    <li>Agile team leadership</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Storyline Navigation: Next Chapter -->
+        <div class="mt-12 text-center animate-bounce">
+            <button onclick="engageWarp('skills')"
+                class="group flex flex-col items-center gap-2 text-neon-purple opacity-70 hover:opacity-100 transition-opacity">
+                <span class="text-xs font-heading tracking-widest uppercase group-hover:text-glow-purple">Initialize
+                    Neural Update</span>
+                <i data-lucide="arrow-down-circle" class="w-8 h-8"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 5: SKILLS - NEURAL CONSTELLATION -->
+<section class="scene relative flex flex-col items-center justify-center p-6 min-h-screen" id="skills">
+
+    <!-- Constellation Connection SVG -->
+    <div class="absolute inset-0 z-0 pointer-events-none opacity-40">
+        <svg width="100%" height="100%" class="w-full h-full">
+            <!-- Random tech lines that intersect with orb areas -->
+            <path d="M 100,200 L 400,100 L 800,300" class="constellation-line" stroke="#00f3ff" stroke-width="1"
+                fill="none" />
+            <path d="M 200,500 L 500,400 L 900,600" class="constellation-line" stroke="#bc13fe" stroke-width="1"
+                fill="none" style="animation-delay: -2s;" />
+            <path d="M 300,100 L 600,300 L 200,600" class="constellation-line" stroke="#ff0055" stroke-width="1"
+                fill="none" style="animation-delay: -4s;" />
+            <path d="M 800,100 L 1000,400" class="constellation-line" stroke="#00f3ff" stroke-width="1" fill="none" />
+        </svg>
+    </div>
+
+    <div class="content-layer w-full max-w-7xl text-center z-10">
+        <h2 class="text-4xl md:text-6xl font-heading mb-20 text-glow-purple reveal">Neural Constellation</h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 relative">
+            <!-- Skill Orbs -->
+            <div class="group flex flex-col items-center gap-4 skill-orb-float reveal">
+                <div
+                    class="w-24 h-24 rounded-full bg-black/50 border border-neon-blue flex items-center justify-center shadow-[0_0_30px_rgba(0,243,255,0.1)] group-hover:shadow-[0_0_50px_rgba(0,243,255,0.6)] group-hover:scale-110 transition-all duration-300 relative">
+                    <div
+                        class="absolute inset-0 rounded-full border border-neon-blue/20 animate-ping opacity-0 group-hover:opacity-100">
+                    </div>
+                    <i data-lucide="code-2" class="w-10 h-10 text-neon-blue"></i>
+                </div>
+                <span class="font-heading tracking-widest text-sm text-neon-blue">Laravel</span>
+            </div>
+
+            <div class="group flex flex-col items-center gap-4 skill-orb-float reveal" style="transition-delay: 100ms;">
+                <div
+                    class="w-24 h-24 rounded-full bg-black/50 border border-neon-purple flex items-center justify-center shadow-[0_0_30px_rgba(188,19,254,0.1)] group-hover:shadow-[0_0_50px_rgba(188,19,254,0.6)] group-hover:scale-110 transition-all duration-300 relative">
+                    <div class="absolute inset-0 rounded-full border border-neon-purple/20 animate-ping opacity-0 group-hover:opacity-100"
+                        style="animation-delay: 0.5s;"></div>
+                    <i data-lucide="flame" class="w-10 h-10 text-neon-purple"></i>
+                </div>
+                <span class="font-heading tracking-widest text-sm text-neon-purple">CodeIgniter</span>
+            </div>
+
+            <div class="group flex flex-col items-center gap-4 skill-orb-float reveal" style="transition-delay: 200ms;">
+                <div
+                    class="w-24 h-24 rounded-full bg-black/50 border border-neon-pink flex items-center justify-center shadow-[0_0_30px_rgba(255,0,85,0.1)] group-hover:shadow-[0_0_50px_rgba(255,0,85,0.6)] group-hover:scale-110 transition-all duration-300 relative">
+                    <div class="absolute inset-0 rounded-full border border-neon-pink/20 animate-ping opacity-0 group-hover:opacity-100"
+                        style="animation-delay: 1s;"></div>
+                    <i data-lucide="database" class="w-10 h-10 text-neon-pink"></i>
+                </div>
+                <span class="font-heading tracking-widest text-sm text-neon-pink">MySQL</span>
+            </div>
+
+            <div class="group flex flex-col items-center gap-4 skill-orb-float reveal" style="transition-delay: 300ms;">
+                <div
+                    class="w-24 h-24 rounded-full bg-black/50 border border-white flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_50px_rgba(255,255,255,0.6)] group-hover:scale-110 transition-all duration-300 relative">
+                    <i data-lucide="git-branch" class="w-10 h-10 text-white"></i>
+                </div>
+                <span class="font-heading tracking-widest text-sm text-white">Git</span>
+            </div>
+
+            <div class="group flex flex-col items-center gap-4 skill-orb-float reveal" style="transition-delay: 400ms;">
+                <div
+                    class="w-24 h-24 rounded-full bg-black/50 border border-neon-blue flex items-center justify-center shadow-[0_0_30px_rgba(0,243,255,0.1)] group-hover:shadow-[0_0_50px_rgba(0,243,255,0.6)] group-hover:scale-110 transition-all duration-300 relative">
+                    <i data-lucide="layers" class="w-10 h-10 text-neon-blue"></i>
+                </div>
+                <span class="font-heading tracking-widest text-sm text-neon-blue">Angular</span>
+            </div>
+
+            <div class="group flex flex-col items-center gap-4 skill-orb-float reveal" style="transition-delay: 500ms;">
+                <div
+                    class="w-24 h-24 rounded-full bg-black/50 border border-teal-400 flex items-center justify-center shadow-[0_0_30px_rgba(45,212,191,0.1)] group-hover:shadow-[0_0_50px_rgba(45,212,191,0.6)] group-hover:scale-110 transition-all duration-300 relative">
+                    <i data-lucide="box" class="w-10 h-10 text-teal-400"></i>
+                </div>
+                <span class="font-heading tracking-widest text-sm text-teal-400">APIs</span>
+            </div>
+        </div>
+
+        <!-- Storyline Navigation: To Projects -->
+        <div class="mt-20">
+            <button onclick="engageWarp('projects')"
+                class="relative px-8 py-3 bg-transparent border border-white/30 hover:border-white text-white font-heading uppercase tracking-widest transition-all group overflow-hidden">
+                <span class="relative z-10">Deploy to Project Sector</span>
+                <div
+                    class="absolute inset-0 bg- white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                </div>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 6: PROJECT WORLDS -->
+<section class="scene relative flex flex-col items-center justify-center py-20" id="projects">
+    <h2
+        class="text-4xl md:text-8xl font-heading mb-4 z-0 text-white/5 absolute top-10 left-0 w-full select-none text-center">
+        DEVELOPMENTS</h2>
+
+    <div class="content-layer w-full max-w-7xl px-6 relative z-10">
+        <div class="text-center mb-16">
+            <h3
+                class="text-neon-blue font-heading tracking-[0.5em] text-sm mb-4 uppercase inline-block border-b border-neon-blue/20 pb-2">
+                Corporate Deployments
+            </h3>
+            <p class="text-gray-400 font-body text-lg mt-4 max-w-2xl mx-auto">
+                Engineered solutions for government infrastructure, industrial systems, and AI-driven platforms.
+            </p>
+        </div>
+
+        <div class="project-grid">
+            <!-- Project 1: Smart Water -->
+            <div class="project-card group" style="--card-glow: var(--color-neon-blue);">
+                <div class="project-glow-pulse top-0 right-0"></div>
+                <div class="project-icon-wrapper">
+                    <i data-lucide="droplets" class="w-8 h-8 text-neon-blue"></i>
+                </div>
+                <div class="project-tag">GOVERNMENT IOT</div>
+                <h4 class="project-title">Smart Water</h4>
+                <p class="project-desc">
+                    Scalable IoT infrastructure for real-time water management and monitoring systems.
+                </p>
+                <div class="project-link">
+                    DATA UPLINK <i data-lucide="external-link" class="w-4 h-4"></i>
+                </div>
+            </div>
+
+            <!-- Project 2: Enopeck -->
+            <div class="project-card group" style="--card-glow: var(--color-neon-purple);">
+                <div class="project-glow-pulse top-0 right-0"></div>
+                <div class="project-icon-wrapper">
+                    <i data-lucide="factory" class="w-8 h-8 text-neon-purple"></i>
+                </div>
+                <div class="project-tag">INDUSTRIAL CMS</div>
+                <h4 class="project-title">Enopeck</h4>
+                <p class="project-desc">
+                    Comprehensive content management system tailored for heavy industrial production workflows.
+                </p>
+                <div class="project-link">
+                    SYSTEM ACCESS <i data-lucide="external-link" class="w-4 h-4"></i>
+                </div>
+            </div>
+
+            <!-- Project 3: Benchmark -->
+            <div class="project-card group" style="--card-glow: var(--color-neon-pink);">
+                <div class="project-glow-pulse top-0 right-0"></div>
+                <div class="project-icon-wrapper">
+                    <i data-lucide="graduation-cap" class="w-8 h-8 text-neon-pink"></i>
+                </div>
+                <div class="project-tag">AI EDUCATION</div>
+                <h4 class="project-title">Benchmark</h4>
+                <p class="project-desc">
+                    AI-powered platform for language assessment and educational performance tracking.
+                </p>
+                <div class="project-link">
+                    NEURAL LINK <i data-lucide="external-link" class="w-4 h-4"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Storyline Navigation: To AI Labs -->
+    <div class="mt-20 relative z-20">
+        <button onclick="engageWarp('ailabs')"
+            class="text-neon-pink font-heading tracking-[0.3em] text-xs hover:text-white transition-colors animate-pulse flex flex-col items-center gap-2">
+            <span>[ ACCESS CLASSIFIED AI DIVISION ]</span>
+            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+        </button>
+    </div>
+</section>
+
+<!-- SECTION 7: PERSONAL AI LABS -->
+<section class="scene relative flex flex-col items-center justify-center p-6" id="ailabs">
+    <div class="content-layer min-w-full lg:min-w-[1200px] grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Glowing AI Core -->
+        <div class="relative flex justify-center items-center order-2 lg:order-1">
+            <div class="w-80 h-80 relative group cursor-pointer">
+                <div
+                    class="absolute inset-0 bg-neon-purple rounded-full blur-[100px] opacity-50 group-hover:opacity-100 transition-opacity duration-500">
+                </div>
+                <div class="absolute inset-0 border-4 border-white/10 rounded-full animate-[spin_8s_linear_infinite]">
+                </div>
+                <div
+                    class="absolute inset-4 border-2 border-neon-purple rounded-full animate-[spin_12s_linear_infinite_reverse]">
+                </div>
+
+                <div
+                    class="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                    <i data-lucide="cpu" class="w-32 h-32 text-white drop-shadow-[0_0_20px_rgba(188,19,254,1)]"></i>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="holo-card p-12 rounded-3xl border border-neon-purple/30 bg-black/60 backdrop-blur-xl order-1 lg:order-2">
+            <div class="flex items-center gap-4 mb-6">
+                <i data-lucide="flask-conical" class="text-neon-purple w-8 h-8"></i>
+                <span class="text-neon-purple font-heading tracking-[0.3em] text-sm">EXPERIMENTAL DIVISION</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl text-white font-heading mb-4">IELTSBandAI</h2>
+            <h3 class="text-xl text-gray-400 mb-8 border-b border-gray-800 pb-4">Advanced Neural Network for
+                Language Assessment</h3>
+
+            <ul class="space-y-6 mb-10 text-gray-300">
+                <li class="flex items-center gap-4">
+                    <div class="w-2 h-2 bg-neon-purple rounded-full shadow-[0_0_10px_#bc13fe]"></div>
+                    <span class="font-body text-lg">Real-time Band Prediction (95% Accuracy)</span>
+                </li>
+                <li class="flex items-center gap-4">
+                    <div class="w-2 h-2 bg-neon-purple rounded-full shadow-[0_0_10px_#bc13fe]"></div>
+                    <span class="font-body text-lg">Contextual Grammar Neural Core</span>
+                </li>
+                <li class="flex items-center gap-4">
+                    <div class="w-2 h-2 bg-neon-purple rounded-full shadow-[0_0_10px_#bc13fe]"></div>
+                    <span class="font-body text-lg">Instant Feedback Loop</span>
+                </li>
+            </ul>
+
+            <button
+                class="w-full py-5 bg-neon-purple text-white font-heading text-lg tracking-wider rounded border border-neon-purple hover:bg-transparent hover:shadow-[0_0_30px_rgba(188,19,254,0.4)] transition-all">
+                ACCESS SYSTEM
+            </button>
+        </div>
+    </div>
+
+    <!-- Storyline Navigation: Finale -->
+    <div class="absolute bottom-6 left-0 w-full text-center z-20">
+        <button onclick="engageWarp('contact')"
+            class="group flex flex-col items-center gap-2 text-gray-500 hover:text-white transition-colors">
+            <span class="text-xs font-heading tracking-[0.5em] uppercase">Establish Connection</span>
+            <i data-lucide="chevrons-down" class="w-6 h-6 animate-bounce text-neon-blue"></i>
+        </button>
+    </div>
+</section>
+
+<!-- SECTION 7.5: CINEMATIC MESSAGE -->
+<section class="scene flex flex-col items-center justify-center relative select-none bg-black" id="movie-msg">
+    <div class="content-layer text-center z-10 p-4 flex flex-col items-center">
+        <!-- Bat Signal Container -->
+        <div id="bat-signal-container" class="mb-8 opacity-0 scale-50 transition-all duration-1000 ease-out">
+            <div
+                class="relative w-48 h-32 md:w-64 md:h-40 bg-[#fff700] rounded-[50%] shadow-[0_0_50px_rgba(255,247,0,0.6)] flex items-center justify-center overflow-hidden border-4 border-[#fff700]">
+                <!-- Interactive Shadow/Glare -->
+                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/10"></div>
+
+                <!-- Bat SVG Shape -->
+                <svg viewBox="0 0 100 60" class="w-[90%] h-[90%] drop-shadow-md z-10">
+                    <path fill="#020204"
+                        d="M50 53 C20 53 5 35 15 25 C17 22 25 25 30 30 C35 25 40 10 50 10 C60 10 65 25 70 30 C75 25 83 22 85 25 C95 35 80 53 50 53 Z M 30 30 Q 35 15 45 15 L 45 10 L 43 5 L 47 10 L 50 5 L 53 10 L 57 5 L 55 10 L 55 15 Q 65 15 70 30" />
+                    <!-- Using a very simplified bat-wing abstraction for robustness -->
+                    <path fill="#020204"
+                        d="M10,25 Q30,15 40,30 Q45,10 50,20 Q55,10 60,30 Q70,15 90,25 Q100,50 50,55 Q0,50 10,25 Z" />
+                </svg>
+            </div>
+        </div>
+
+        <h2 class="text-3xl md:text-5xl font-heading text-white type-writer" data-text="Yes, I am Batman."></h2>
+    </div>
+</section>
+
+<!-- SECTION 8: FINAL CTA -->
+<section class="scene relative flex flex-col items-center justify-center text-center p-6 bg-black/80" id="contact">
+    <div class="content-layer z-10 max-w-4xl">
+        <h2 class="text-5xl md:text-8xl font-heading text-white mb-10 leading-tight">
+            Not just code. <br>
+            I build <span class="text-neon-blue text-glow">intelligence</span>.
+        </h2>
+
+        <div class="flex flex-col md:flex-row gap-8 justify-center items-center mt-12">
+            <a href="mailto:contact@nishant.dev"
+                class="group relative inline-flex items-center justify-center w-64 h-16 bg-white text-black font-heading text-xl font-bold tracking-wider hover:bg-neon-blue transition-all duration-300 overflow-hidden rounded-sm">
+                <span class="relative z-10 flex items-center gap-2">
+                    CONTACT ME <i data-lucide="arrow-right"
+                        class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </span>
+            </a>
+
+            <a href="#"
+                class="group relative inline-flex items-center justify-center w-64 h-16 border-2 border-white text-white font-heading text-xl font-bold tracking-wider hover:border-neon-purple hover:text-neon-purple transition-all duration-300 rounded-sm">
+                VIEW GITHUB
+            </a>
+        </div>
+
+        <p class="mt-20 text-gray-600 font-heading text-sm tracking-widest">
+            © 2026 NISHANT SHEKHAWAT // SYSTEM OPERATIONAL
+        </p>
+
+        <!-- Mission Extraction Rocket -->
+        <div class="extraction-rocket" onclick="switchToSPAMode()" title="Return to Hangar (Reset Portfolio)">
+            <i data-lucide="rocket" class="w-8 h-8"></i>
+            <div class="rocket-trail"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Script Init -->
+<script src="js/cinematic.js"></script>
+<script>
+    lucide.createIcons();
+</script>
+</body>
+
+</html>

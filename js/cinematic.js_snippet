@@ -1,0 +1,21 @@
+
+    // --- 4.5 BATMAN SEQUENCE ---
+    function handleBatmanSequence(section) {
+        if (section.dataset.run === "true") return;
+        section.dataset.run = "true";
+        
+        const textEl = section.querySelector('.type-writer');
+        const signal = document.getElementById('bat-signal-container');
+        
+        // 1. Type the text
+        typeCustom(textEl, "Yes, I am Batman. ", () => {
+             // 2. Reveal Bat Signal with drama
+             if(signal) {
+                 signal.classList.remove('opacity-0', 'scale-50');
+                 signal.classList.add('opacity-100', 'scale-100', 'animate-pulse-slow');
+                 
+                 // Add a little shake effect to the section
+                 section.classList.add('bat-impact');
+             }
+        });
+    }

@@ -1,0 +1,689 @@
+/* Cinematic Portfolio Engine Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --color-space-black: #020204;
+    --color-neon-blue: #00f3ff;
+    --color-neon-purple: #bc13fe;
+    --color-neon-pink: #ff0055;
+    --color-hologram: rgba(0, 243, 255, 0.1);
+}
+
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+body {
+    background-color: var(--color-space-black);
+    color: #ffffff;
+    font-family: 'Rajdhani', sans-serif;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 0;
+    height: 100vh;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-heading {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.scene {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    transform-style: preserve-3d;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 1s ease, transform 1.2s cubic-bezier(0.5, 0, 0, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.scene-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#warp-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+}
+
+.content-layer {
+    position: relative;
+    z-index: 10;
+    transform: translateZ(30px);
+}
+
+@keyframes scan {
+    0% {
+        top: 0%;
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+.scan-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-neon-blue);
+    box-shadow: 0 0 15px var(--color-neon-blue);
+    animation: scan 3s linear infinite;
+    z-index: 20;
+}
+
+.text-glow {
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.7), 0 0 20px rgba(0, 243, 255, 0.5);
+}
+
+.holo-card {
+    background: rgba(10, 10, 20, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+    transition: all 0.4s ease;
+    transform-style: preserve-3d;
+}
+
+.typing-cursor::after {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 1em;
+    background: var(--color-neon-blue);
+    margin-left: 5px;
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Holographic Scan & Data Acquisition */
+@keyframes holographic-scan {
+    0% {
+        top: -20%;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 120%;
+        opacity: 0;
+    }
+}
+
+.scanning-beam {
+    position: absolute;
+    top: 0;
+    left: -10%;
+    width: 120%;
+    height: 15px;
+    background: linear-gradient(to bottom, transparent, var(--color-neon-blue), transparent);
+    box-shadow: 0 0 25px var(--color-neon-blue);
+    z-index: 30;
+    pointer-events: none;
+    display: none;
+}
+
+.scanning-active .scanning-beam {
+    display: block;
+    animation: holographic-scan 2.5s ease-in-out infinite;
+}
+
+/* Mission Button Engagement */
+@keyframes button-glow {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(0, 243, 255, 1);
+        transform: scale(1.1);
+    }
+
+    100% {
+        box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+        transform: scale(1);
+    }
+}
+
+.button-engaged {
+    animation: button-glow 1s ease-in-out forwards !important;
+    border-color: #ffffff !important;
+    background: var(--color-neon-blue) !important;
+    color: #000000 !important;
+}
+
+.resonance-active {
+    border-color: #ffffff !important;
+    box-shadow: 0 0 30px #ffffff !important;
+    transition: all 1s ease !important;
+}
+
+@keyframes scanVertical {
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+.constellation-line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawLine 3s ease-out forwards;
+}
+
+@keyframes drawLine {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.section-hidden {
+    display: none !important;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+nav#main-nav {
+    will-change: transform, opacity;
+    z-index: 9999;
+}
+
+/* Mission Extraction Rocket */
+.extraction-rocket {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--color-neon-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-neon-blue);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+    overflow: visible;
+}
+
+.extraction-rocket:hover {
+    transform: translateY(-10px) scale(1.1);
+    background: var(--color-neon-blue);
+    color: #000000;
+    box-shadow: 0 0 40px var(--color-neon-blue);
+}
+
+.rocket-trail {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 0;
+    background: linear-gradient(to bottom, var(--color-neon-blue), transparent);
+    transition: height 0.4s ease;
+}
+
+.extraction-rocket:hover .rocket-trail {
+    height: 40px;
+}
+
+/* Forceful Mission Complete Resets */
+.mission-complete #mission-button {
+    background: black !important;
+    color: white !important;
+    border-color: var(--color-neon-blue) !important;
+    transform: scale(1) !important;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.4) !important;
+    animation: none !important;
+}
+
+/* Rings keep their original colors and animations in mission-complete mode */
+
+
+.mission-complete .extraction-rocket {
+    display: none !important;
+}
+
+/* --- PREMIUM CINEMATIC TRANSITIONS --- */
+
+/* 1. SCENE FOCUS STATES (Subtle & Smooth) */
+.focus-slide-active {
+    transform: scale(1.02) translateX(-20px);
+    transition: transform 2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    filter: brightness(1.1);
+}
+
+.focus-zoom-active {
+    transform: scale(1.1);
+    transition: transform 2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    filter: brightness(0.8);
+}
+
+.focus-warp-active {
+    transform: perspective(1000px) rotateX(2deg) scale(0.98);
+    transition: transform 2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    filter: hue-rotate(10deg);
+}
+
+.focus-glitch-active {
+    animation: scene-glitch-pulse 0.2s infinite;
+}
+
+.focus-reveal-active {
+    filter: brightness(1.5) blur(1px);
+    transition: filter 2s ease;
+}
+
+@keyframes scene-glitch-pulse {
+    0% {
+        transform: translate(0);
+    }
+
+    25% {
+        transform: translate(-2px, 2px);
+    }
+
+    50% {
+        transform: translate(2px, -2px);
+    }
+
+    75% {
+        transform: translate(-2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* 2. BUTTON ACTIVATION STATES (High Energy) */
+
+/* Warp Charge (Generic/Base) */
+.warp-charge-active {
+    animation: pulse-generic 1.5s infinite;
+    box-shadow: 0 0 30px var(--color-neon-blue);
+    background: var(--color-neon-blue);
+    color: black;
+    border-color: white;
+}
+
+@keyframes pulse-generic {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px var(--color-neon-blue);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 40px var(--color-neon-blue);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px var(--color-neon-blue);
+    }
+}
+
+/* Specific Button Styles */
+.btn-slide-active {
+    animation: btn-slide-shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+    background: var(--color-neon-blue) !important;
+    color: black !important;
+    box-shadow: 0 0 50px var(--color-neon-blue) !important;
+}
+
+@keyframes btn-slide-shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.btn-zoom-active {
+    animation: btn-zoom-pulse 1.5s infinite;
+    background: var(--color-neon-purple) !important;
+    color: white !important;
+    box-shadow: 0 0 60px var(--color-neon-purple) !important;
+    border-color: white !important;
+}
+
+@keyframes btn-zoom-pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+        box-shadow: 0 0 80px var(--color-neon-purple);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.btn-warp-active {
+    animation: btn-warp-stretch 1s ease-in-out infinite;
+    background: var(--color-neon-pink) !important;
+    box-shadow: 0 0 50px var(--color-neon-pink) !important;
+}
+
+@keyframes btn-warp-stretch {
+
+    0%,
+    100% {
+        transform: scaleX(1);
+    }
+
+    50% {
+        transform: scaleX(1.1) scaleY(0.9);
+    }
+}
+
+.btn-glitch-active {
+    animation: btn-glitch-jitter 0.3s infinite;
+    background: white !important;
+    color: black !important;
+    box-shadow: 0 0 40px cyan, 3px 3px 0px red !important;
+}
+
+@keyframes btn-glitch-jitter {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+.btn-reveal-active {
+    animation: btn-reveal-flash 1.5s ease-in-out infinite;
+    background: white !important;
+    color: black !important;
+    box-shadow: 0 0 80px white !important;
+}
+
+@keyframes btn-reveal-flash {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+        box-shadow: 0 0 100px white;
+    }
+}
+
+/* BAT SIGNAL ANIMATIONS */
+.signal-active {
+    animation: signal-boot 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes signal-boot {
+    0% {
+        transform: scale(0.5) rotate(-10deg);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.1) rotate(5deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.bat-impact {
+    animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+/* --- PROJECT SECTOR REDESIGN --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.project-card {
+    position: relative;
+    background: rgba(10, 10, 20, 0.4);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(255, 255, 255, 0.08) 0%,
+            transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: all 0.5s;
+}
+
+.project-card:hover .project-icon-wrapper {
+    background: var(--card-glow);
+    border-color: white;
+    box-shadow: 0 0 20px var(--card-glow);
+    color: white;
+}
+
+.project-card:hover .project-icon-wrapper i {
+    filter: brightness(0) invert(1);
+}
+
+.project-tag {
+    font-size: 0.7rem;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.2em;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 1rem;
+    color: var(--card-glow);
+    border: 1px solid var(--card-glow);
+    opacity: 0.8;
+}
+
+.project-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #fff, #888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.project-desc {
+    font-size: 0.9rem;
+    color: #999;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.project-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--card-glow);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.4s;
+}
+
+.project-card:hover .project-link {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.project-glow-pulse {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: var(--card-glow);
+    filter: blur(60px);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.2;
+    transition: all 0.5s;
+}
+
+.project-card:hover .project-glow-pulse {
+    opacity: 0.5;
+    scale: 1.5;
+}
