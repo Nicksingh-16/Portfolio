@@ -41,7 +41,7 @@ window.switchToSPAMode = function () {
     if (movieScrollTimer) clearTimeout(movieScrollTimer);
 
     // 3. Forcefully Restore All Professional Sections
-    const spaIds = ['target', 'experience', 'skills', 'projects', 'ailabs', 'contact'];
+    const spaIds = ['target', 'experience', 'skills', 'projects', 'ai-labs', 'concepts', 'contact'];
     spaIds.forEach(id => {
         const section = document.getElementById(id);
         if (section) {
@@ -104,9 +104,10 @@ window.switchToSPAMode = function () {
 
     // 9. Re-enable snap after transition
     setTimeout(() => {
-        document.body.style.scrollSnapType = 'y mandatory';
-        document.documentElement.style.scrollSnapType = 'y mandatory';
-        console.log("Restoration Complete: Standing by for new commands.");
+        // Disabled scroll snap for better dynamic height support
+        document.body.style.scrollSnapType = 'none';
+        document.documentElement.style.scrollSnapType = 'none';
+        console.log("Restoration Complete: Native Scroll Engaged.");
     }, 1500);
 
     targetSpeed = 2;
@@ -271,7 +272,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'experience': { scene: 'focus-slide-active', btn: 'btn-slide-active' },
             'skills': { scene: 'focus-zoom-active', btn: 'btn-zoom-active' },
             'projects': { scene: 'focus-warp-active', btn: 'btn-warp-active' },
-            'ailabs': { scene: 'focus-glitch-active', btn: 'btn-glitch-active' },
+            'ai-labs': { scene: 'focus-glitch-active', btn: 'btn-glitch-active' },
+            'concepts': { scene: 'focus-slide-active', btn: 'btn-slide-active' },
             'contact': { scene: 'focus-reveal-active', btn: 'btn-reveal-active' }
         };
 
@@ -366,27 +368,33 @@ document.addEventListener('DOMContentLoaded', () => {
                                     // Sequence 4: AI Labs
                                     movieScrollTimer = setTimeout(() => {
                                         if (!isMovieMode) return;
-                                        focusAndScroll('ailabs');
+                                        focusAndScroll('ai-labs');
 
-                                        // Sequence 5: Batman Message (Movie Msg)
+                                        // Sequence 4.5: Concepts
                                         movieScrollTimer = setTimeout(() => {
                                             if (!isMovieMode) return;
-                                            focusAndScroll('movie-msg');
+                                            focusAndScroll('concepts');
 
-                                            // Sequence 6: Contact + Finish
+                                            // Sequence 5: Batman Message (Movie Msg)
                                             movieScrollTimer = setTimeout(() => {
                                                 if (!isMovieMode) return;
-                                                focusAndScroll('contact');
+                                                focusAndScroll('movie-msg');
 
-                                                // Final Reset
+                                                // Sequence 6: Contact + Finish
                                                 movieScrollTimer = setTimeout(() => {
-                                                    if (isMovieMode) {
-                                                        localStorage.setItem('sawIntro', 'true');
-                                                        location.reload();
-                                                    }
-                                                }, 4000);
-                                            }, 5000); // 5 sec for Batman to display
-                                        }, 5000); // 5 sec for AI Labs
+                                                    if (!isMovieMode) return;
+                                                    focusAndScroll('contact');
+
+                                                    // Final Reset
+                                                    movieScrollTimer = setTimeout(() => {
+                                                        if (isMovieMode) {
+                                                            localStorage.setItem('sawIntro', 'true');
+                                                            location.reload();
+                                                        }
+                                                    }, 4000);
+                                                }, 5000); // 5 sec for Batman to display
+                                            }, 5000); // 5 sec for AI Labs
+                                        }, 5000);
                                     }, 5000);
                                 }, 5000);
                             }, 5000);
@@ -433,3 +441,41 @@ document.addEventListener('DOMContentLoaded', () => {
         switchToSPAMode();
     }
 });
+
+// Mobile Menu Toggle (Premium Drawer)
+function toggleMobileMenu() {
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const drawer = document.getElementById('mobile-menu-drawer');
+    const body = document.body;
+
+    if (!backdrop || !drawer) return;
+
+    // Toggle Backdrop
+    backdrop.classList.toggle('opacity-0');
+    backdrop.classList.toggle('pointer-events-none');
+
+    // Toggle Drawer
+    drawer.classList.toggle('translate-x-full');
+
+    // Body Scroll
+    if (!drawer.classList.contains('translate-x-full')) {
+        body.style.overflow = 'hidden';
+    } else {
+        body.style.overflow = '';
+    }
+
+    // Link Animations
+    const links = document.querySelectorAll('.mobile-link');
+    links.forEach((link, index) => {
+        if (!drawer.classList.contains('translate-x-full')) {
+            // Opening
+            setTimeout(() => {
+                link.classList.remove('translate-x-10', 'opacity-0');
+            }, 100 + (index * 50));
+        } else {
+            // Closing
+            link.classList.add('translate-x-10', 'opacity-0');
+        }
+    });
+}
+

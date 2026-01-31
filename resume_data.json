@@ -1,0 +1,530 @@
+{
+  "personal_info": {
+    "name": "Nishant Shekhawat",
+    "title": "Software Developer | PHP | Laravel Specialist",
+    "location": "A-10 Kanchan Pushp, Mahim Road, Palghar - 401404",
+    "phone": "8329387047",
+    "email": "nishantshekhawat2001@gmail.com",
+    "portfolio_url": "https://portfolio-production-6eb0.up.railway.app",
+    "github": "https://github.com/Nicksingh-16",
+    "linkedin": "https://www.linkedin.com/in/nishant-shekhawat16/"
+  },
+  "objective": "Motivated Software Developer with a passion for leveraging new technologies to develop innovative web solutions. Adept at enhancing user engagement and driving business growth through expert development of high-performance web applications. Seeking to contribute my expertise in PHP, Laravel and full-stack development to a dynamic team.",
+  "work_experience": [
+    {
+      "company": "Webito Infotech",
+      "position": "Laravel Developer",
+      "location": "Mumbai, India",
+      "start_date": "2024-06-01",
+      "end_date": null,
+      "current": true,
+      "duration": "June 2024 - Present",
+      "responsibilities": [
+        "Developing and maintaining multiple projects using Laravel and CodeIgniter frameworks",
+        "Managing both backend and frontend development tasks, ensuring seamless integration and functionality",
+        "Collaborating with cross-functional teams to define, design, and ship new features",
+        "Troubleshooting, debugging, and optimizing existing applications to enhance performance",
+        "Participating in the complete software development lifecycle",
+        "Staying updated with the latest industry trends and technologies to continuously improve skills and project outcomes"
+      ],
+      "achievements": [
+        "Architected enterprise-grade REST APIs serving 10,000+ daily requests",
+        "Boosted database performance by 40% through query optimization and indexing",
+        "Implemented backend microservices architecture for scalable applications",
+        "Led migration of legacy systems to modern Laravel framework"
+      ],
+      "technologies": [
+        "Laravel",
+        "CodeIgniter",
+        "PHP",
+        "MySQL",
+        "REST API",
+        "Git",
+        "Docker"
+      ]
+    },
+    {
+      "company": "Astronaut Creatives",
+      "position": "Software Developer",
+      "location": "Mumbai, India",
+      "start_date": "2023-04-01",
+      "end_date": "2024-04-30",
+      "current": false,
+      "duration": "April 2023 - April 2024",
+      "responsibilities": [
+        "Developed and optimized high-performance web applications integrating front-end and back-end technologies",
+        "Led end-to-end project development, managing CRUD operations, and ensuring seamless integration of frontend and backend systems",
+        "Specialized in PHP (Laravel, CodeIgniter) and Angular, enhancing site performance and user experience",
+        "Delivered software solutions for the fintech sector, focusing on compliance, regulations, and security standards",
+        "Innovated with emerging technologies to exceed client expectations and contribute to business success"
+      ],
+      "achievements": [
+        "Successfully delivered 5+ fintech projects with 100% compliance to security standards",
+        "Reduced page load times by 60% through frontend optimization",
+        "Implemented Angular-based SPAs with Laravel backend APIs",
+        "Mentored junior developers in best practices and code review"
+      ],
+      "technologies": [
+        "Laravel",
+        "CodeIgniter",
+        "Angular",
+        "PHP",
+        "MySQL",
+        "REST API",
+        "Git",
+        "Agile"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "BSC Computer Science",
+      "institution": "University of Mumbai",
+      "location": "Mumbai, India",
+      "graduation_year": "2024",
+      "cgpa": "9.43",
+      "grade_scale": "10.0",
+      "relevant_coursework": [
+        "Data Structures & Algorithms",
+        "Database Management Systems",
+        "Web Technologies",
+        "Software Engineering",
+        "Machine Learning",
+        "Computer Networks"
+      ]
+    }
+  ],
+  "skills": {
+    "backend": [
+      {
+        "name": "Laravel",
+        "proficiency": 95,
+        "years": 3
+      },
+      {
+        "name": "CodeIgniter",
+        "proficiency": 90,
+        "years": 2.5
+      },
+      {
+        "name": "PHP",
+        "proficiency": 95,
+        "years": 3
+      },
+      {
+        "name": "REST API Development",
+        "proficiency": 90,
+        "years": 2.5
+      }
+    ],
+    "frontend": [
+      {
+        "name": "HTML5",
+        "proficiency": 95,
+        "years": 4
+      },
+      {
+        "name": "CSS3",
+        "proficiency": 90,
+        "years": 4
+      },
+      {
+        "name": "JavaScript",
+        "proficiency": 85,
+        "years": 3
+      },
+      {
+        "name": "Bootstrap",
+        "proficiency": 90,
+        "years": 3
+      },
+      {
+        "name": "Tailwind CSS",
+        "proficiency": 85,
+        "years": 2
+      },
+      {
+        "name": "Angular (Basics)",
+        "proficiency": 70,
+        "years": 1.5
+      }
+    ],
+    "database": [
+      {
+        "name": "MySQL",
+        "proficiency": 90,
+        "years": 3
+      },
+      {
+        "name": "SQL",
+        "proficiency": 90,
+        "years": 3
+      },
+      {
+        "name": "Database Design",
+        "proficiency": 85,
+        "years": 2.5
+      }
+    ],
+    "tools_devops": [
+      {
+        "name": "Git Version Control",
+        "proficiency": 90,
+        "years": 3
+      },
+      {
+        "name": "Docker",
+        "proficiency": 75,
+        "years": 1.5
+      },
+      {
+        "name": "CI/CD",
+        "proficiency": 70,
+        "years": 1
+      },
+      {
+        "name": "Agile Development",
+        "proficiency": 85,
+        "years": 2
+      }
+    ],
+    "other": [
+      {
+        "name": "Third-Party API Integration",
+        "proficiency": 90,
+        "years": 2.5
+      },
+      {
+        "name": "Frontend-Backend Integration",
+        "proficiency": 95,
+        "years": 3
+      },
+      {
+        "name": "SDLC",
+        "proficiency": 85,
+        "years": 2.5
+      },
+      {
+        "name": "AI Integration",
+        "proficiency": 80,
+        "years": 1
+      }
+    ]
+  },
+  "projects": {
+    "corporate": [
+      {
+        "name": "Smart Water - Palghar Municipal Corporation",
+        "category": "Government IoT",
+        "tech_stack": [
+          "CodeIgniter",
+          "PHP",
+          "MySQL",
+          "IoT Integration",
+          "Real-time Systems"
+        ],
+        "description": "District-wide water development project with IoT device management",
+        "features": [
+          "Live tracking of district-wide IoT water devices",
+          "Real-time ON/OFF valve control system",
+          "CMS dashboard for government officials",
+          "Device health monitoring and alerts",
+          "Water consumption analytics"
+        ],
+        "role": "Full Stack Developer",
+        "year": "2024",
+        "status": "Live",
+        "link": null
+      },
+      {
+        "name": "Enopeck Seals",
+        "category": "Industrial CMS",
+        "tech_stack": [
+          "Laravel",
+          "PHP",
+          "MySQL",
+          "Bootstrap"
+        ],
+        "description": "Industrial seal manufacturer company website with multi-role CMS",
+        "features": [
+          "Developed dynamic company website",
+          "Multi-role CMS for industries & products",
+          "Role-based admin access",
+          "Product catalog management",
+          "Inquiry management system"
+        ],
+        "role": "Laravel Developer",
+        "year": "2024",
+        "status": "Live",
+        "link": "https://enopeck.com/"
+      },
+      {
+        "name": "Octanet - ISP Service Management Tool",
+        "category": "ISP Operations",
+        "tech_stack": [
+          "Laravel",
+          "Angular",
+          "MySQL",
+          "Google Maps API"
+        ],
+        "description": "Comprehensive ISP operations and service management platform",
+        "features": [
+          "Feature development for ISP operations",
+          "Google Maps integration for network coverage",
+          "MoU & device configuration modules",
+          "Customer management system",
+          "Billing and subscription management"
+        ],
+        "role": "Full Stack Developer",
+        "year": "2023-2024",
+        "status": "Live",
+        "link": "https://octanet.tech/"
+      },
+      {
+        "name": "Vedcool - School Management System",
+        "category": "Education",
+        "tech_stack": [
+          "Laravel",
+          "PHP",
+          "MySQL",
+          "Bootstrap"
+        ],
+        "description": "Comprehensive school management system",
+        "features": [
+          "Bug fixing and performance improvements",
+          "Feature enhancements & code reviews",
+          "Team collaboration for custom modules",
+          "Student and teacher management",
+          "Attendance and grade tracking"
+        ],
+        "role": "Backend Developer",
+        "year": "2023",
+        "status": "Live",
+        "link": "https://vedcool.ai/"
+      },
+      {
+        "name": "Benchmark IELTS - AI Mock Test Platform",
+        "category": "AI Education",
+        "tech_stack": [
+          "Laravel",
+          "React",
+          "MySQL",
+          "AI Integration",
+          "REST API"
+        ],
+        "description": "AI-powered IELTS mock test platform",
+        "features": [
+          "Built backend from scratch",
+          "REST APIs & database design",
+          "Optimized for performance & security",
+          "AI-powered test evaluation",
+          "Progress tracking and analytics"
+        ],
+        "role": "Backend Architect",
+        "year": "2024",
+        "status": "Live",
+        "link": "https://edubenchmark.com/blog/ielts/"
+      }
+    ],
+    "personal": [
+      {
+        "name": "IELTSBandAI",
+        "category": "AI Platform",
+        "tech_stack": [
+          "Laravel",
+          "AI Integration",
+          "Gemini API",
+          "MySQL"
+        ],
+        "description": "AI-powered platform for instant IELTS Speaking & Writing evaluation",
+        "features": [
+          "AI-powered platform for instant IELTS Speaking & Writing evaluation",
+          "Provides quick band estimation with structured feedback",
+          "Designed to help students improve in real-time",
+          "Real-time band prediction (95% accuracy)",
+          "Contextual grammar neural core"
+        ],
+        "url": "https://ieltsbandai.onrender.com/",
+        "status": "Live",
+        "year": "2024"
+      },
+      {
+        "name": "CareMate",
+        "category": "AI Health",
+        "tech_stack": [
+          "Laravel",
+          "AI APIs",
+          "Mobile Web"
+        ],
+        "description": "AI Health Assistance Platform (Concept & Design Phase)",
+        "features": [
+          "Smart health assistant to help users track symptoms, medicines, and doctor reminders",
+          "Designed to provide basic AI-based health guidance and record history",
+          "Focused on rural and budget-friendly healthcare access"
+        ],
+        "status": "Concept & Design Phase",
+        "year": "2024"
+      },
+      {
+        "name": "TrainConnect",
+        "category": "Smart Railway",
+        "tech_stack": [
+          "Laravel",
+          "APIs",
+          "Maps"
+        ],
+        "description": "Smart Indian Railway Companion (Concept & Prototype Design)",
+        "features": [
+          "Railway utility platform for live train tracking, coach-wise passenger mapping, and platform insights",
+          "Enables coach-level community connection so passengers in the same coach can communicate",
+          "Focused on passenger safety, assistance, and real-time alerts for delays, route changes, and seat availability",
+          "Built for both railway authorities and passengers to improve coordination and travel experience"
+        ],
+        "status": "Concept & Prototype Design",
+        "year": "2024"
+      }
+    ],
+    "concepts": [
+      {
+        "name": "CareMate - Family Health Companion",
+        "category": "AI Health",
+        "tech_stack": [
+          "Laravel",
+          "MySQL",
+          "Gemini AI",
+          "Firebase",
+          "PWA"
+        ],
+        "description": "Family-Centered Digital Health Platform for Elderly Care",
+        "role": "Product Architect",
+        "year": "2024",
+        "status": "Concept & Design",
+        "documentation": {
+          "overview": "Family Health Companion is a mobile-first healthcare web application designed to help elderly parents in India manage their daily medicines, understand basic health information, and stay connected with their families and trusted doctors. The platform bridges the emotional and practical gap between elders and migrated family members.",
+          "problem": "India has over 140 million people aged 60+, suffering from chronic conditions. Issues include forgetting medicines, dosage confusion, and emotional isolation. Migrated children lack reliable ways to monitor parents' health.",
+          "vision": "To create a calm, trustworthy, family-first health companion that helps elders live safely and helps families stay emotionally connected.",
+          "features": [
+            "Home Dashboard: Friendly greeting, medicine reminders, quick actions",
+            "Medicine Management: Manual/Scan entry, dosage, timing",
+            "Smart Reminders: Push/WhatsApp/SMS notifications to family on missed dose",
+            "Visual Medicine Scan: Camera-based recognition",
+            "Family Circle: Role-based access for Son, Daughter, Caregiver",
+            "AI Health Assistant (Safe Mode): Explains symptoms, never diagnoses",
+            "Emergency Safety: Detects critical keywords, emergency warnings"
+          ],
+          "tech_stack": [
+            "Frontend: PWA (HTML/JS)",
+            "Backend: Laravel (API-first)",
+            "Database: MySQL",
+            "AI: Gemini / OpenAI",
+            "Hosting: Railway"
+          ]
+        }
+      },
+      {
+        "name": "GenCorp - Creator Talent Intelligence",
+        "category": "Creator Economy",
+        "tech_stack": [
+          "Laravel",
+          "Sanctum",
+          "Meilisearch",
+          "Redis",
+          "OpenAI"
+        ],
+        "description": "Where creators are hired for skill, not followers.",
+        "role": "System Architect",
+        "year": "2024",
+        "status": "Concept & Design",
+        "documentation": {
+          "overview": "A professional network and hiring system for the creator economy. It replaces vanity metrics (followers) with a Creator Performance Index (CPI) and connects creators with brands based on skill, trust, and ROI.",
+          "problem": "Creators are invisible despite skill; no professional identity. Brands face fake followers and no ROI tracking. Existing platforms focus on popularity, not performance.",
+          "vision": "Create the global professional system for creator talent.",
+          "features": [
+            "Creator Performance Index (CPI): Engagement, Quality, ROI, Trust",
+            "Creator Identity Engine: Portfolio, Skills, Work Gallery",
+            "Brand Discovery Engine: Skill + ROI filters",
+            "Collaboration Marketplace: Contracting, Deliverables, Payments",
+            "Feedback Engine: Content reviews, improvement tracking"
+          ],
+          "tech_stack": [
+            "Backend: Laravel",
+            "Search: Meilisearch",
+            "Queue: Horizon",
+            "AI: OpenAI",
+            "Storage: S3"
+          ]
+        }
+      },
+      {
+        "name": "TrainConnect - Smart Railway System",
+        "category": "GovTech Mobility",
+        "tech_stack": [
+          "Flutter",
+          "Laravel",
+          "Firebase",
+          "PostgreSQL",
+          "Docker"
+        ],
+        "description": "Smart Passenger Networking & Support System for Indian Railways",
+        "role": "Product Designer",
+        "year": "2024",
+        "status": "Concept & Prototype",
+        "documentation": {
+          "overview": "TrainConnect creates a real-time digital ecosystem inside each train using PNR-based secure login, coach-wise communication groups, and structured service requests.",
+          "problem": "Indian Railways communication is unstructured, unsafe, and inefficient. There is no digital layer inside a moving train.",
+          "vision": "To turn every train into a connected, trackable service environment.",
+          "features": [
+            "PNR Login: Auto-fetch train, coach, seat",
+            "Coach Group Chat: Localized communication",
+            "Service Requests: Food, cleaning, medical",
+            "Female Safe Chat: Opt-in group",
+            "Staff Panel: Real-time request management",
+            "Incident Alerts: Medical, security, harassment"
+          ],
+          "tech_stack": [
+            "Frontend: Flutter / Vue.js",
+            "Backend: Laravel / Node.js",
+            "Realtime: Socket.IO",
+            "DB: PostgreSQL",
+            "Auth: PNR + OTP"
+          ]
+        }
+      }
+    ],
+    "academic": [
+      {
+        "name": "Content-Based Movie Recommendation System",
+        "tech_stack": [
+          "Python",
+          "Flask",
+          "Machine Learning",
+          "Scikit-learn"
+        ],
+        "description": "Web application for personalized movie recommendations",
+        "features": [
+          "Developed using Python and Flask",
+          "Content-based filtering algorithm",
+          "User preference analysis",
+          "Interactive web interface"
+        ],
+        "year": "2023"
+      },
+      {
+        "name": "Online Examination System",
+        "tech_stack": [
+          "PHP",
+          "MySQL",
+          "JavaScript"
+        ],
+        "description": "Web platform for conducting online exams",
+        "features": [
+          "Secure exam environment",
+          "Auto-grading system",
+          "Result analytics",
+          "Admin dashboard"
+        ],
+        "year": "2022"
+      }
+    ]
+  }
+}
