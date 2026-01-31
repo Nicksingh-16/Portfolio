@@ -9,9 +9,9 @@ The chatbot now uses a **round-robin load balancing** system with **3 Gemini API
 ### 1. **Multiple API Keys**
 Three Gemini API keys are configured in `.env`:
 ```env
-GEMINI_API_KEY_1=AIzaSyAZ8H4EBcq1aO-5NEu5SkA-orvNaX_szcA
-GEMINI_API_KEY_2=AIzaSyAlcScdfQm-WrUl9UQEyw3Jt-_gD_mAqgU
-GEMINI_API_KEY_3=AIzaSyAkLsgSlVYEHSuwxKxtnMZx3hJmvJwWclY
+GEMINI_API_KEY_1=your_first_gemini_api_key_here
+GEMINI_API_KEY_2=your_second_gemini_api_key_here
+GEMINI_API_KEY_3=your_third_gemini_api_key_here
 ```
 
 ### 2. **Round-Robin Selection**
