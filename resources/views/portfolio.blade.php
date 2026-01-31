@@ -176,8 +176,8 @@
         </div>
 
         <!-- Location Pin (Mumbai/Palghar) -->
-        <div id="surat-container"
-            class="absolute top-[42%] left-[69%] w-0 h-0 flex items-center justify-center opacity-0 transition-opacity duration-500 z-10">
+        <div id="palghar-container"
+            class="absolute top-[39.5%] left-[69.5%] w-0 h-0 flex items-center justify-center opacity-0 transition-opacity duration-500 z-10">
             <div class="content w-4 h-4 bg-white rounded-full shadow-[0_0_30px_#fff] animate-ping"></div>
             <div class="absolute w-2 h-2 bg-neon-pink rounded-full border border-white"></div>
             <div
@@ -296,15 +296,7 @@
             @endforeach
         </div>
 
-        <!-- Storyline Navigation: Next Chapter -->
-        <div class="mt-12 text-center animate-bounce">
-            <button onclick="engageWarp('skills')"
-                class="group flex flex-col items-center gap-2 text-neon-purple opacity-70 hover:opacity-100 transition-opacity">
-                <span class="text-xs font-heading tracking-widest uppercase group-hover:text-glow-purple">Initialize
-                    Neural Update</span>
-                <i data-lucide="arrow-down-circle" class="w-8 h-8"></i>
-            </button>
-        </div>
+
     </div>
 </section>
 

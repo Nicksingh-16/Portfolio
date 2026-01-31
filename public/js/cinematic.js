@@ -161,7 +161,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    for (let i = 0; i < 150; i++) stars.push(new Star());
+    const isMobile = window.innerWidth < 768;
+    const starCount = isMobile ? 60 : 150;
+    for (let i = 0; i < starCount; i++) stars.push(new Star());
 
     let currentSpeed = 2;
     function animate() {
@@ -190,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-    }, { threshold: 0.5 });
+    }, { threshold: isMobile ? 0.2 : 0.4 });
 
     document.querySelectorAll('.scene').forEach(s => sceneObserver.observe(s));
 
@@ -203,8 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
         typeCustom(textEl, "Finding the dev hero...", () => {
             movieScrollTimer = setTimeout(() => {
                 textEl.textContent = "";
-                typeCustom(textEl, "oh found , the myth , the man , the legend - he is in surat right now !", () => {
-                    const pin = document.getElementById('surat-container');
+                typeCustom(textEl, "oh found , the myth , the man , the legend - he is in palghar right now !", () => {
+                    const pin = document.getElementById('palghar-container');
                     const map = document.getElementById('map-world');
                     if (pin) pin.style.opacity = '1';
                     movieScrollTimer = setTimeout(() => {
@@ -261,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 1. If NOT movie mode, just jump there
         if (!isMovieMode) {
-            target.scrollIntoView({ behavior: 'smooth' });
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             return;
         }
 
@@ -306,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Smooth Scroll (Delayed for Animation Effect)
         setTimeout(() => {
-            target.scrollIntoView({ behavior: 'smooth' });
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 1200);
     }
 
@@ -435,6 +437,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (isMovieMode) {
         console.log("Starting movie mode...");
+        // Safety Fallback: Force Hero to be active to ensure "Skip" button is visible
+        const hero = document.getElementById('hero');
+        if (hero) hero.classList.add('scene-active');
+
         movieScrollTimer = setTimeout(() => engageWarp('search'), 3000);
     } else {
         console.log("Starting SPA mode...");

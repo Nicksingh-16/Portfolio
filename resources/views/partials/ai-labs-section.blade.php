@@ -57,12 +57,5 @@
         </div>
     </div>
 
-    <!-- Storyline Navigation: Finale -->
-    <div class="absolute bottom-6 left-0 w-full text-center z-20">
-        <button onclick="engageWarp('concepts')"
-            class="group flex flex-col items-center gap-2 text-gray-500 hover:text-white transition-colors mx-auto">
-            <span class="text-xs font-heading tracking-[0.5em] uppercase">Establish Connection</span>
-            <i data-lucide="chevrons-down" class="w-6 h-6 animate-bounce text-neon-blue"></i>
-        </button>
-    </div>
+
 </section>

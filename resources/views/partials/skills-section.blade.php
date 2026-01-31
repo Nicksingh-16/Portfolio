@@ -48,15 +48,6 @@
             @endforeach
         </div>
 
-        <!-- Storyline Navigation: To Projects -->
-        <div class="mt-20">
-            <button onclick="engageWarp('projects')"
-                class="relative px-8 py-3 bg-transparent border border-white/30 hover:border-white text-white font-heading uppercase tracking-widest transition-all group overflow-hidden">
-                <span class="relative z-10">Deploy to Project Sector</span>
-                <div
-                    class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                </div>
-            </button>
-        </div>
+
     </div>
 </section>

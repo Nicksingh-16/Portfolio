@@ -13,6 +13,7 @@ html {
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     height: 100%;
+    height: -webkit-fill-available;
     margin: 0;
     overflow: hidden;
 }
@@ -26,12 +27,19 @@ body {
     background-color: var(--color-space-black);
     color: #ffffff;
     font-family: 'Rajdhani', sans-serif;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     margin: 0;
     height: 100vh;
+    height: 100dvh;
     scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
+}
+
+/* Disable Snap on Mobile for better stability */
+@media (min-width: 768px) {
+    body {
+        scroll-snap-type: y mandatory;
+    }
 }
 
 .cinematic-wrapper {
@@ -51,6 +59,7 @@ h4,
 .scene {
     position: relative;
     height: 100vh;
+    height: 100dvh;
     width: 100%;
     transform-style: preserve-3d;
     opacity: 0;
@@ -60,8 +69,13 @@ h4,
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+}
+
+@media (min-width: 768px) {
+    .scene {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+    }
 }
 
 .scene-active {
@@ -648,6 +662,7 @@ nav#main-nav {
     margin-bottom: 1rem;
     background: linear-gradient(to right, #fff, #888);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
